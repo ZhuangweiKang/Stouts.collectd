@@ -71,3 +71,10 @@
   notify: collectd restart
   when: collectd_intel_rdt
   
+- name: collectd-configure | Configure Additional Plugin filter
+  template: src=filter_rules.conf.j2 dest={{collectd_config_dir}}/filter_rules.conf validate='{{collectd_sbin_path}}/collectd -t -C %s'
+  notify: collectd restart
+
+- name: collectd-configure | Configure Additional Plugin 
+  template: src=numa_pmu_agg.conf.j2 dest={{collectd_config_dir}}/numa_pmu_agg.conf validate='{{collectd_sbin_path}}/collectd -t -C %s'
+  notify: collectd restart

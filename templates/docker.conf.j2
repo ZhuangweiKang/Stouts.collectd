@@ -7,6 +7,10 @@ LoadPlugin python
   <Module dockerplugin>
     BaseURL "unix://var/run/docker.sock"
     Timeout 3
+    Interval "{{collectd_interval}}"
+    # Dimension "image" "inspect:Config.Image"
+   #  Dimension "federation" "env:federation"
+   #  Dimension "federate" "env:federate"  
   </Module>
 </Plugin>
 {% endif %}
