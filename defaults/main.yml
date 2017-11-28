@@ -25,7 +25,7 @@ collectd_prefix_sbin: "{{collectd_prefix}}/sbin"
 collectd_plugins_prefix: "{{collectd_prefix_conf}}/conf.d"
 
 # General options
-collectd_interval: 10
+collectd_interval: 5
 collectd_readthreads: 7
 collectd_hostname: "{{ inventory_hostname }}"
 collectd_fdqnlookup: true
@@ -35,7 +35,7 @@ collectd_plugins: []                # Ex. [nginx, memcached]
 collectd_plugins_options: {}        # See below for examples.
 
 # Collectd default plugins
-collectd_default_plugins: [cpu, df, interface, load, memory, swap]
+collectd_default_plugins: [cpu, contextswitch, memory, disk]
 collectd_default_plugins_options:
   swap:
   - ReportByDevice false
@@ -46,7 +46,11 @@ collectd_default_plugins_options:
   - ValuesPercentage true
   - ReportByState false
   - ReportByCpu true
-  - ReportNumCpu true
+  - ReportNumCpu false
+  disk:
+  - Disk "sda"
+  - IgnoreSelected false
+
 
 
 # Additional types
@@ -124,11 +128,11 @@ pmu_tools_dir: "/opt/pmu-tools"
 collectd_intel_pmutools_options:
   ReportHardwareCacheEvents: true
   ReportKernelPMUEvents: true
-  ReportSoftwareEvents: true
+  ReportSoftwareEvents: false
   HardwareEvents: "L2_RQSTS.CODE_RD_HIT,L2_RQSTS.CODE_RD_MISS,L2_RQSTS.ALL_$"
 
 collectd_intel_rdt: no
 collectd_intel_rdt_interval: 1
 collectd_intel_rdt_options:
-  Cores: ""
+  Cores: "0-15"
   
