@@ -17,7 +17,7 @@
     chdir: "{{ collectd_prefix_git_src }}"
   # when: collectd_source.changed
   become: yes
-  ignore_error: yes
+  ignore_errors: yes
 
 - name: collectd-install | Create /etc/init.d/collectd
   template: src=initd.collectd.j2 dest=/etc/init.d/collectd
