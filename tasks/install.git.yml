@@ -35,6 +35,8 @@
 - name: collectd-install | Enable collectd.service
   shell: systemctl enable collectd.service
   become: yes
+  ignore_errors: yes
+
 
 - name: collectd-install | start the collectd.service 
   service: name=collectd state=started enabled=yes
