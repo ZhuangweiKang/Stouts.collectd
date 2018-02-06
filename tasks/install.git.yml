@@ -2,7 +2,7 @@
 
 - name: collectd-install | Install dependencies
   apt: name={{item}} force=yes
-  with_items: [build-essential, libcurl4-openssl-dev, libpcap-dev, libyajl-dev, flex, bison, pkg-config, automake]
+  with_items: [build-essential, libcurl4-openssl-dev, libpcap-dev, libyajl-dev, flex, bison, pkg-config, automake,python-dev]
 
 - name: collectd-install | Download Collectd
   git:
