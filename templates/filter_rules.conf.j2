@@ -17,6 +17,11 @@ LoadPlugin match_regex
 #    </Target>
 #  </Rule>
 
+
+
+
+{% if collectd_numa_cpu_aggr %}
+
  <Rule>
     <Match regex>
       Plugin "^cpu$"
@@ -27,6 +32,9 @@ LoadPlugin match_regex
     </Target>
     Target stop
   </Rule>
+
+{% endif %}
+
 
 <Rule>
     <Match regex>

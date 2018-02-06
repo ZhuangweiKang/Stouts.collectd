@@ -1,11 +1,21 @@
 # Default plugins
-#LoadPlugin cpu
-#<Plugin cpu>
-# ValuesPercentage true
-# ReportByState false
-# ReportByCpu true
-# ReportNumCpu true
-#</Plugin>
+
+
+{% if not collectd_numa_cpu_aggr %}
+LoadPlugin cpu
+<Plugin cpu>
+ ValuesPercentage true
+ ReportByState false
+ ReportByCpu false
+ ReportNumCpu false
+</Plugin>
+
+{% endif %}
+
+
+
+
+{% if collectd_numa_cpu_aggr %}
 
 <Plugin "aggregation">
 <Aggregation>
@@ -18,7 +28,6 @@
     CalculateSum false
 </Aggregation>
 
-{% if collectd_numa_cpu_aggr %}
 LoadPlugin aggregation
 <Plugin "aggregation">
 {% for node_num in collectd_numa_node_cpus %}
