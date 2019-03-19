@@ -88,3 +88,4 @@
 - name: collectd-configure | Configure Additional Plugin 
   template: src=numa_pmu_agg.conf.j2 dest={{collectd_config_dir}}/numa_pmu_agg.conf validate='{{collectd_sbin_path}}/collectd -t -C %s'
   notify: collectd restart
+  when: collectd_intel_pmutools
