@@ -25,7 +25,7 @@
 
 - name: collectd-install | create run/collectd.pid file  
   shell: mkdir -p "{{collectd_prefix}}/run"
-  becom: yes
+  become: yes
 
 
 - name: collectd-install | make it executable /etc/init.d/collectd
