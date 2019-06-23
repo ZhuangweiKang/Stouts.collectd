@@ -9,8 +9,11 @@
   - "Debian-default.yml"
   when: ansible_os_family == 'Debian' and collectd_service_autodetect
 
+- include: install.yum.yml
+  when: install_collectd and ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
 - include: install.ppa.yml
-  when: install_collectd and collectd_use_ppa
+  when: install_collectd and collectd_use_ppa and ansible_os_family == 'Debian'
   tags: [collectd, collectd-install]
 
 - include: install.deb.yml
@@ -24,8 +27,9 @@
 
 
 - include: configure.yml
+  # when: ansible_os_family == 'Debian'
   tags: [collectd, collectd-configure]
 
 - include: configure-service.yml
-  when: not collectd_use_ppa
+  when: not collectd_use_ppa  and ansible_os_family == 'Debian'
   tags: [collectd, collectd-configure]

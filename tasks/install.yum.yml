@@ -1,0 +1,7 @@
+---
+  - name: Install collectd using yum
+    yum:
+      name: "{{ item }}"
+    with_items:
+    - collectd
+    - collectd-amqp

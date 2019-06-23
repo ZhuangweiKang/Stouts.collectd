@@ -41,7 +41,8 @@
   when: docker_stats
 
 - name: collectd-configure | Configure Additional Plugin Docker Stats 2 of 3
-  shell: pip3 install -r /usr/share/collectd/docker-collectd-plugin/requirements.txt && pip install -r /usr/share/collectd/docker-collectd-plugin/requirements.txt
+  # shell: pip3 install -r /usr/share/collectd/docker-collectd-plugin/requirements.txt && pip install -r /usr/share/collectd/docker-collectd-plugin/requirements.txt
+  shell: pip install -r /usr/share/collectd/docker-collectd-plugin/requirements.txt
   # notify: collectd restart
   when: docker_stats
 
