@@ -1,10 +1,10 @@
 ---
 
-- name: collectd-install | Install ppa
-  apt_repository: >
-    repo={{ collectd_ppa_source }}
-    update_cache=yes
-  when: not collectd_use_ppa_ci 
+#- name: collectd-install | Install ppa
+#  apt_repository: >
+#    repo={{ collectd_ppa_source }}
+#    update_cache=yes
+#  when: not collectd_use_ppa_ci 
  
 - name: collectd-install | add signing key
   apt_key:
