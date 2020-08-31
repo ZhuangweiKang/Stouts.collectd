@@ -51,6 +51,11 @@
   notify: collectd restart
   when: docker_stats
 
+- name: collectd-configure | Configure Additional Plugin Docker-Kafka Stats
+  template: src=docker_kafka.conf.j2 dest={{collectd_config_dir}}/docker_kafka.conf validate='{{collectd_sbin_path}}/collectd -t -C %s'
+  notify: collectd restart
+  when: docker_kafka_stats
+
 - name: collectd-configure | Configure Additional Plugin intel_pmutools 1 of 4
   shell: cat "{{ pmu_tools_dir }}"/eventlist_info.txt
   become: yes

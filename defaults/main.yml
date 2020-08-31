@@ -119,6 +119,9 @@ collectd_numa_cpu_aggr_options:
 # Enable docker monitoring by default
 docker_stats: yes
 
+# Enable docker-kafka momnitoring by default
+docker_kafka_stats: yes
+
 
 
 # Enable docker monitoring by default
