@@ -51,7 +51,18 @@
   notify: collectd restart
   when: docker_stats
 
-- name: collectd-configure | Configure Additional Plugin Docker-Kafka Stats
+- name: collectd-configure | Configure Additional Plugin Docker-Kafka Stats 1 of 3
+  git:
+    dest: /usr/share/collectd/docker-kafka-collectd-plugin
+    repo: https://github.com/doc-vu/docker-kafka-collectd-plugin.git
+    force: yes
+  when: docker_kafka_stats
+
+- name: collectd-configure | Configure Additional Plugin Docker-Kafka Stats 2 of 3
+  shell: pip install -r /usr/share/collectd/docker-kafka-collectd-plugin/requirements.txt
+  when: docker_kafka_stats
+
+- name: collectd-configure | Configure Additional Plugin Docker-Kafka Stats 3 of 3
   template: src=docker_kafka.conf.j2 dest={{collectd_config_dir}}/docker_kafka.conf validate='{{collectd_sbin_path}}/collectd -t -C %s'
   notify: collectd restart
   when: docker_kafka_stats
