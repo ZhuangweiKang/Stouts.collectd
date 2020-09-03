@@ -7,7 +7,7 @@ LoadPlugin python
         Import "dockerkafkaplugin"
 
         <Module dockerkafkaplugin>
-                Interval 1
+                Interval "{{collectd_interval}}"
                 TempOutputDir "/usr/share/collectd/docker-kafka-collectd-plugin"
                 MbeansFile "/usr/share/collectd/docker-kafka-collectd-plugin/docker_kafka.json"
                 PluginName "docker_kafka"

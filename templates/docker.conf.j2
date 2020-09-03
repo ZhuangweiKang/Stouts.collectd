@@ -6,7 +6,7 @@ LoadPlugin python
   Import "dockerplugin"
   <Module dockerplugin>
     BaseURL "unix://var/run/docker.sock"
-    Timeout 10
+    Timeout 30
     Interval "{{collectd_interval}}"
     # Dimension "image" "inspect:Config.Image"
    #  Dimension "federation" "env:federation"
