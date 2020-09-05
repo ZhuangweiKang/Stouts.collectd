@@ -8,11 +8,9 @@ LoadPlugin python
 
         <Module dockerkafkaplugin>
                 Interval "{{collectd_interval}}"
-                TempOutputDir "/usr/share/collectd/docker-kafka-collectd-plugin"
                 MbeansFile "/usr/share/collectd/docker-kafka-collectd-plugin/docker_kafka.json"
                 PluginName "docker_kafka"
                 JMX_PORT "9999"
-                Verbose false
         </Module>
 </Plugin>
 {% endif %}
