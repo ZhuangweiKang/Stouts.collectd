@@ -25,7 +25,7 @@ collectd_prefix_sbin: "{{collectd_prefix}}/sbin"
 collectd_plugins_prefix: "{{collectd_prefix_conf}}/conf.d"
 
 # General options
-collectd_interval: 1
+collectd_interval: 5
 collectd_readthreads: 7
 collectd_hostname: "{{ inventory_hostname }}"
 collectd_fdqnlookup: true
